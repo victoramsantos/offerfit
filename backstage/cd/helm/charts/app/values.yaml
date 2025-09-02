@@ -1,0 +1,21 @@
+deployment:
+  replicaCount: 1
+
+  image:
+    repository: registry-1.docker.io/victoramsantos/offerfit
+    tag: dev
+
+  application:
+    healthPath: /health
+
+  resources:
+    limits:
+      cpu: 100m
+      memory: 100Mi
+    requests:
+      cpu: 100m
+      memory: 100Mi
+
+service:
+  type: ClusterIP
+  port: 8080

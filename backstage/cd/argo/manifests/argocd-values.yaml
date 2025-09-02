@@ -1,0 +1,47 @@
+server:
+#  service:
+#    type: NodePort
+#    nodePort: 30080  # Optional: fix the port for easier access
+
+  extraArgs:
+    - --insecure
+
+  ingress:
+    enabled: false
+
+  resources:
+    requests:
+      memory: "100Mi"
+      cpu: "100m"
+    limits:
+      memory: "100Mi"
+      cpu: "100m"
+
+redis:
+  enabled: true
+  architecture: standalone
+
+redis-ha:
+  enabled: false
+
+controller:
+  metrics:
+    enabled: false
+
+repoServer:
+  metrics:
+    enabled: false
+
+applicationSet:
+  enabled: false
+
+notifications:
+  enabled: false
+
+dex:
+  enabled: false
+
+#configs:
+#  secret:
+#    argocdServerAdminPassword: "admin"
+

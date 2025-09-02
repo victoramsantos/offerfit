@@ -1,0 +1,10 @@
+name: "service_a"
+
+deployment:
+  replicaCount: 1
+
+  image:
+    tag: dev
+
+service:
+  port: 8011
