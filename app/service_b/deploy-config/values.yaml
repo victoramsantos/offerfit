@@ -7,5 +7,9 @@ deployment:
     image: offerfit-service-b
     tag: test
 
+  env:
+    APP_PORT: 8012
+    SERVICE_A_PORT: 8011
+
 service:
   port: 8012

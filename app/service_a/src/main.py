@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse
 
 # Service A
 SERVICE_A_HOST = "0.0.0.0"
-SERVICE_A_PORT = int(os.getenv("APP_PORT", 8012))
+SERVICE_A_PORT = int(os.getenv("APP_PORT", "8012"))
 
 app = FastAPI(
     title="Service A FastAPI Client",

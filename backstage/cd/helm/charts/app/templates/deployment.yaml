@@ -17,6 +17,8 @@ spec:
       containers:
         - name: {{ .Values.name }}
           image: {{ .Values.deployment.image.repository }}/{{ .Values.deployment.image.image }}:{{ .Values.deployment.image.tag }}
+          environment:
+            {{- toYaml .Values.deployment.env | nindent 12 }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

@@ -6,10 +6,10 @@ from fastapi.responses import JSONResponse
 
 # Service B
 SERVICE_B_HOST = "0.0.0.0"
-SERVICE_B_PORT = int(os.getenv("APP_PORT", 8012))
+SERVICE_B_PORT = int(os.getenv("APP_PORT", "8012"))
 
 # Core URL where Service A is available
-SERVICE_A_PORT = int(os.getenv("SERVICE_A_PORT", 8011))
+SERVICE_A_PORT = int(os.getenv("SERVICE_A_PORT", "8011"))
 SERVICE_A_URL = f"http://0.0.0.0:{SERVICE_A_PORT}"
 
 app = FastAPI(
