@@ -4,21 +4,14 @@ on:
     workflows: [ "Python CI" ]
     types: [ completed ]
     branches: [ main ]
-#  push:
-#    paths:
-#      - 'app/service-a/**'
-#      - 'app/service-b/**'
-#    branches:
-#      - main
 jobs:
   build-and-push:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
+    environment: dev
     strategy:
       matrix:
         APP_NAME: [ "service-a", "service-b" ]
-    #    env:
-    #      FULL_IMAGE: "${{ secrets.DOCKERHUB_USERNAME }}/${IMG_PREFIX}-${{matrix.APP_NAME}}:${GITHUB_SHA:0:7}"
     steps:
       - name: Checkout to the current CI commit
         uses: actions/checkout@v4
