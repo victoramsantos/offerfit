@@ -1,8 +1,4 @@
 server:
-#  service:
-#    type: NodePort
-#    nodePort: 30080  # Optional: fix the port for easier access
-
   extraArgs:
     - --insecure
 
@@ -11,11 +7,11 @@ server:
 
   resources:
     requests:
-      memory: "100Mi"
-      cpu: "100m"
+      memory: "300Mi"
+      cpu: "300m"
     limits:
-      memory: "100Mi"
-      cpu: "100m"
+      memory: "300Mi"
+      cpu: "300m"
 
 redis:
   enabled: true
@@ -41,7 +37,7 @@ notifications:
 dex:
   enabled: false
 
-#configs:
-#  secret:
-#    argocdServerAdminPassword: "admin"
-
+configs:
+  cm:
+    timeout.reconciliation: 20s
+    timeout.hard.reconciliation: 60s
