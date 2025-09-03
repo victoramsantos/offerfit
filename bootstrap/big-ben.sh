@@ -19,18 +19,18 @@ helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm install ingress-nginx ingress-nginx/ingress-nginx \
   --namespace ingress-nginx \
   --create-namespace \
-  -f ${LOCAL_HOME}/backstage/infra/kind-resources/ingress-controllercur-values.yaml
+  -f ${LOCAL_HOME}/backstage/infra/kind-resources/ingress-controller-values.yaml
 
 # force the app build
-docker build ${LOCAL_HOME}/app/service_a/. -t victoramsantos/offerfit-service-a:test
-docker build ${LOCAL_HOME}/app/service_b/. -t victoramsantos/offerfit-service-b:test
+docker build ${LOCAL_HOME}/app/service-a/. -t victoramsantos/offerfit-service-a:test
+docker build ${LOCAL_HOME}/app/service-b/. -t victoramsantos/offerfit-service-b:test
 
 # wait for ArgoCD and Ingress components start
 sleep 10
 
 # Deploy the ArgoCD Application for both apps
-kubectl apply -f ${LOCAL_HOME}/app/service_a/deploy-config/application.yaml
-kubectl apply -f ${LOCAL_HOME}/app/service_b/deploy-config/application.yaml
+kubectl apply -f ${LOCAL_HOME}/app/service-a/deploy-config/application.yaml
+kubectl apply -f ${LOCAL_HOME}/app/service-b/deploy-config/application.yaml
 
 # Add ingresses
 ## argocd

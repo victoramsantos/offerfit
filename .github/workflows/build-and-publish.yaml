@@ -1,0 +1,42 @@
+name: Publish Docker image
+on:
+  workflow_run:
+    workflows: ["Python CI"]
+    types: [completed]
+  push:
+    paths:
+      - 'app/service-a/**'
+      - 'app/service-b/**'
+    branches:
+      - main
+jobs:
+  build-and-push:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        APP_NAME: [ "service-a", "service-b" ]
+#    env:
+#      FULL_IMAGE: "${{ secrets.DOCKERHUB_USERNAME }}/${IMG_PREFIX}-${{matrix.APP_NAME}}:${GITHUB_SHA:0:7}"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Building ${{ matrix.APP_NAME }}
+        env:
+          IMG_PREFIX: "offerfit"
+        run: |
+#          docker build -t ${FULL_IMAGE} ./app/${{matrix.APP_NAME}}/.
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/${IMG_PREFIX}-${{matrix.APP_NAME}}:${GITHUB_SHA:0:7} ./app/${{matrix.APP_NAME}}/.
+
+      - name: Push Docker image
+        run: |
+#          docker push ${FULL_IMAGE}
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/${IMG_PREFIX}-${{matrix.APP_NAME}}:${GITHUB_SHA:0:7}
+

@@ -10,7 +10,7 @@ SERVICE_B_PORT = int(os.getenv("APP_PORT", "8012"))
 
 # Core URL where Service A is available
 SERVICE_A_PORT = int(os.getenv("SERVICE_A_PORT", "8011"))
-SERVICE_A_HOST = os.getenv("SERVICE_A_HOST", "0.0.0.0")
+SERVICE_A_HOST = os.getenv("SERVICE_A_HOST", "http://0.0.0.0")
 SERVICE_A_URL = f"{SERVICE_A_HOST}:{SERVICE_A_PORT}"
 
 app = FastAPI(

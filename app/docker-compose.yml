@@ -1,11 +1,11 @@
 services:
   service_a:
-    build: ./service_a/
+    build: service-a/
     environment:
       APP_PORT: 8011
     network_mode: "host"
   service_b:
-    build: ./service_b/
+    build: service-b/
     environment:
       APP_PORT: 8012
     network_mode: "host"
