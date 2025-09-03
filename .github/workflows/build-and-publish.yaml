@@ -33,6 +33,7 @@ jobs:
 
       - name: Push Docker image
         env:
+          IMG_PREFIX: "offerfit"
           COMMIT: ${{ github.event.workflow_run.head_sha }}
         run: |
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/${IMG_PREFIX}-${{matrix.APP_NAME}}:${COMMIT:0:7}
