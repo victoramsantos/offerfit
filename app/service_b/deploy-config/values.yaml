@@ -8,8 +8,10 @@ deployment:
     tag: test
 
   env:
-    APP_PORT: 8012
-    SERVICE_A_PORT: 8011
+    - name: "APP_PORT"
+      value: 8012
+    - name: "SERVICE_A_PORT"
+      value: 8011
 
 service:
   port: 8012

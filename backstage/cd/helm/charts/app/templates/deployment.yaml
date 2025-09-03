@@ -18,11 +18,17 @@ spec:
         - name: {{ .Values.name }}
           image: {{ .Values.deployment.image.repository }}/{{ .Values.deployment.image.image }}:{{ .Values.deployment.image.tag }}
           env:
-            {{- with .Values.deployment.env }}
-              {{- range . }}
-              - name: { { .name } }
-                value: "{{ .value }}"
-              {{- end }}
+            {{- range .Values.deployment.env }}
+              - name: {{ .name | quote }}
+                value: {{ .value | quote }}
+            {{- end }}
+            {{- range .Values.deployment.defaultEnvs }}
+              - name: {{ .name | quote }}
+                value: {{ .value | quote }}
+            {{- end }}
+            {{- range .Values.deployment.envFromFields }}
+              - name: {{ .name | quote }}
+                valueFrom: {{- toYaml .valueFrom | nindent 18 }}
             {{- end }}
           ports:
             - name: http

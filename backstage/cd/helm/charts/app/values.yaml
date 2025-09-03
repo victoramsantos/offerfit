@@ -9,6 +9,14 @@ deployment:
   application:
     healthPath: /health
 
+  defaultEnvs: {}
+
+  envFromFields:
+    - name: NODE_IP
+      valueFrom:
+        fieldRef:
+          fieldPath: status.hostIP
+
   resources:
     limits:
       cpu: 100m
