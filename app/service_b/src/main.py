@@ -17,6 +17,13 @@ app = FastAPI(
     version="0.1.0",
 )
 
+@app.get("/health")
+def health():
+    return JSONResponse(
+        {
+            "Status": "Success"
+        }
+    )
 
 @app.get("/ping_service_a")
 def ping_service_a() -> JSONResponse:

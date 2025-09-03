@@ -11,6 +11,7 @@ kubectl port-forward service/argocd-server -n argocd 8080:443
 
 
 kubectl apply -f app/service_a/deploy-config/application.yaml
+kubectl apply -f app/service_b/deploy-config/application.yaml
 
 # uninstall
 helm uninstall argocd -n argocd
