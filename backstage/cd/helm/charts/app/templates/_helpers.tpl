@@ -5,3 +5,7 @@
 {{- define "app.labels" -}}
 app.kubernetes.io/name: {{ include "app.name" . }}
 {{- end -}}
+
+{{- define "ingress.host" -}}
+{{ .Values.name }}.{{ .Values.ingress.host }}
+{{- end -}}

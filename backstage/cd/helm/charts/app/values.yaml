@@ -1,3 +1,5 @@
+namespace: default
+
 deployment:
   replicaCount: 1
 
@@ -28,3 +30,7 @@ deployment:
 service:
   type: ClusterIP
   port: 8080
+
+ingress:
+  enabled: false
+  host: offerfit.local

@@ -13,3 +13,6 @@ deployment:
 
 service:
   port: 8011
+
+ingress:
+  enabled: true
