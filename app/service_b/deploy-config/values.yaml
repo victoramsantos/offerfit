@@ -1,10 +1,11 @@
-name: "service_b"
+name: "service-b"
 
 deployment:
   replicaCount: 1
 
   image:
-    tag: dev
+    image: offerfit-service-b
+    tag: test
 
 service:
   port: 8012

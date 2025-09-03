@@ -2,7 +2,8 @@ deployment:
   replicaCount: 1
 
   image:
-    repository: registry-1.docker.io/victoramsantos/offerfit
+    repository: registry-1.docker.io/victoramsantos/
+    image: blank
     tag: dev
 
   application:
