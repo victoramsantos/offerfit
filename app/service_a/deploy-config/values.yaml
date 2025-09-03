@@ -1,4 +1,4 @@
-name: "service_a"
+name: "service-a"
 
 deployment:
   replicaCount: 1
