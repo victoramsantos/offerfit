@@ -9,7 +9,6 @@ on:
   pull_request:
     branches:
       - main
-
 jobs:
   python-ci:
     runs-on: ubuntu-latest

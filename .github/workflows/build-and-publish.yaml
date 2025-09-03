@@ -34,13 +34,13 @@ jobs:
       - name: Building ${{ matrix.APP_NAME }}
         env:
           IMG_PREFIX: "offerfit"
-          SHORT_SHA: ${{ github.event.workflow_run.head_sha[:7] }}
+          COMMIT: ${{ github.event.workflow_run.head_sha }}
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/${IMG_PREFIX}-${{matrix.APP_NAME}}:${SHORT_SHA} ./app/${{matrix.APP_NAME}}/.
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/${IMG_PREFIX}-${{matrix.APP_NAME}}:${COMMIT:0:7} ./app/${{matrix.APP_NAME}}/.
 
       - name: Push Docker image
         env:
-          SHORT_SHA: ${{ github.event.workflow_run.head_sha[:7] }}
+          COMMIT: ${{ github.event.workflow_run.head_sha }}
         run: |
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/${IMG_PREFIX}-${{matrix.APP_NAME}}:${SHORT_SHA}
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/${IMG_PREFIX}-${{matrix.APP_NAME}}:${COMMIT:0:7}
 
