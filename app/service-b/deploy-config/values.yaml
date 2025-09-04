@@ -14,6 +14,8 @@ deployment:
       value: 8011
     - name: "SERVICE_A_HOST"
       value: "http://service-a-service.default.svc.cluster.local"
+    - name: "APP_VERSION"
+      value: e173c16
 
 service:
   port: 8012
