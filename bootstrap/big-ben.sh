@@ -34,8 +34,8 @@ sleep 10
 kubectl apply -f ${LOCAL_HOME}/app/service-a/deploy-config/developer/application.yaml
 kubectl apply -f ${LOCAL_HOME}/app/service-b/deploy-config/developer/application.yaml
 
-kubectl apply -f ${LOCAL_HOME}/app/service-a/deploy-config/prod/application.yaml
-kubectl apply -f ${LOCAL_HOME}/app/service-b/deploy-config/prod/application.yaml
+kubectl apply -f ${LOCAL_HOME}/app/service-a/deploy-config/production/application.yaml
+kubectl apply -f ${LOCAL_HOME}/app/service-b/deploy-config/production/application.yaml
 
 # Add ingresses
 ## argocd

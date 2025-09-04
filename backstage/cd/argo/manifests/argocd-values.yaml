@@ -14,8 +14,8 @@ server:
       memory: "300Mi"
       cpu: "300m"
     limits:
-      memory: "300Mi"
-      cpu: "300m"
+      memory: "900Mi"
+      cpu: "900m"
 
 redis:
   enabled: true
