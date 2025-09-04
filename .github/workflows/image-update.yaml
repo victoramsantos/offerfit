@@ -36,7 +36,7 @@ jobs:
           git config user.name "github-CI-[bot]"
           git config user.email "github-CI-[bot]@friendly.devops.help"
           
+          git checkout -b $BRANCH
           git add app/${{ matrix.APP_NAME }}/deploy-config/values.yaml
           git commit -m "ci: update ${{ matrix.APP_NAME }} image tag to ${COMMIT:0:7}"
-          git remote add origin $BRANCH
           git push origin $BRANCH
