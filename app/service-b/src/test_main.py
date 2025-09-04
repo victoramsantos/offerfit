@@ -32,6 +32,6 @@ class TestFastAPI(unittest.TestCase):
 
             self.assertEqual(response.status_code, 200)
             self.assertEqual(response.json(), {
-                "message": "Greetings from Service A! (via Service B)"
+                "message": "Greetings from Service A! (via Service B2)"
             })
 
