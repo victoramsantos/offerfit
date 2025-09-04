@@ -4,8 +4,7 @@ kind: Ingress
 metadata:
   name: {{ .Values.environment }}-{{ include "app.name" . }}-ingress
   namespace: {{ .Values.namespace }}
-  labels:
-    {{ include "app.labels" . | indent 2 }}
+  labels: {{ include "app.labels" . | nindent 4}}
 spec:
   rules:
     - host: {{ include "ingress.host" . }}

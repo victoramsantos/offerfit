@@ -3,19 +3,16 @@ kind: Deployment
 metadata:
   name: {{ .Values.environment }}-{{ include "app.name" . }}-deployment
   namespace: {{ .Values.namespace }}
-  labels:
-    {{ include "app.labels" . | indent 2 }}
+  labels: {{ include "app.labels" . | nindent 4}}
 spec:
   revisionHistoryLimit: 3
   replicas: {{ .Values.replicaCount }}
   selector:
-    matchLabels:
-      {{ include "app.labels" . | indent 2 }}
+    matchLabels: {{ include "app.labels" . | nindent 6}}
   template:
     metadata:
       name: {{ .Values.environment }}-{{ include "app.name" . }}
-      labels:
-        {{ include "app.labels" . | indent 2 }}
+      labels: {{ include "app.labels" . | nindent 8}}
     spec:
     {{- if .Values.deployment.nodeSelector }}
       nodeSelector:

@@ -3,8 +3,7 @@ kind: Service
 metadata:
   name: {{ .Values.environment }}-{{ include "app.name" . }}-service
   namespace: {{ .Values.namespace }}
-  labels:
-    {{ include "app.labels" . | indent 4 }}
+  labels: {{ include "app.labels" . | nindent 4}}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -13,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{ include "app.labels" . | indent 4 }}
+    {{ include "app.labels" . | nindent 8}}
