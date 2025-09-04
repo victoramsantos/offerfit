@@ -17,6 +17,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 0
+          persist-credentials: true
+          token: ${{ secrets.CI_PAT_TOKEN }}
 
       - name: Update ${{ matrix.APP_NAME }}/deployment-config/values.yaml with new tag
         env:
