@@ -14,7 +14,7 @@ spec:
     helm:
       valueFiles:
         - values.yaml
-        - /app/service_a/deploy-config/values.yaml
+        - /app/service-a/deploy-config/values.yaml
   sources: []
   project: default
   syncPolicy:
