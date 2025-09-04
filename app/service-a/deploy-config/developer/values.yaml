@@ -7,13 +7,13 @@ deployment:
 
   image:
     image: offerfit-service-a
-    tag: 3fb9cfd
+    tag: 1c665cd
 
   env:
     - name: "APP_PORT"
       value: 8011
     - name: "APP_VERSION"
-      value: 3fb9cfd
+      value: 1c665cd
 
 service:
   port: 8011
