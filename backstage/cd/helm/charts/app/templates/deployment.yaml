@@ -6,6 +6,7 @@ metadata:
   labels:
     {{ include "app.labels" . | indent 2 }}
 spec:
+  revisionHistoryLimit: 3
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
