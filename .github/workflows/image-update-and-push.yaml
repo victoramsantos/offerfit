@@ -27,7 +27,7 @@ jobs:
           COMMIT: ${{ github.event.workflow_run.head_sha }}
         run: |
           cd app/${{ matrix.APP_NAME }}/deploy-config
-          sed -i 's/tag:.*/tag: ${COMMIT:0:7}/' values.yaml
+          sed -i "s/tag:.*/tag: ${COMMIT:0:7}/" values.yaml
           
           echo "Updated ${{ matrix.APP_NAME }}/deployment-config/values.yaml content:"
           cat values.yaml
@@ -44,4 +44,4 @@ jobs:
           git checkout -b $BRANCH
           git add app/${{ matrix.APP_NAME }}/deploy-config/values.yaml
           git commit -m "ci: update ${{ matrix.APP_NAME }} image tag to ${COMMIT:0:7}"
-          git push origin $BRANCH
+          git push origin $BRANCH --force
