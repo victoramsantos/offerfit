@@ -43,3 +43,4 @@ if __name__ == "__main__":
     uvicorn.run(app, host=SERVICE_B_HOST, port=SERVICE_B_PORT)
 
 
+
