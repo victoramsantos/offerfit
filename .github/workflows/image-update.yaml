@@ -1,4 +1,4 @@
-name: Image Update
+name: Image Update and Push
 on:
   workflow_run:
     workflows: [ "Build and Publish" ]
