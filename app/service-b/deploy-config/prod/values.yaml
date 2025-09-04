@@ -15,7 +15,7 @@ deployment:
     - name: "SERVICE_A_PORT"
       value: 8011
     - name: "SERVICE_A_HOST"
-      value: "http://service-a-service.default.svc.cluster.local"
+      value: "http://prod-service-a-service.default.svc.cluster.local"
     - name: "APP_VERSION"
       value: f36dd48
 
