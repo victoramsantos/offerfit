@@ -31,13 +31,13 @@ jobs:
       - name: Commit and push changes
         env:
           COMMIT: ${{ github.event.workflow_run.head_sha }}
-#          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PAT_TOKEN: ${{ secrets.CI_PAT_TOKEN }}
           BRANCH: main
         run: |
           git config user.name "github-CI-[bot]"
           git config user.email "github-CI-[bot]@friendly.devops.help"
           
-          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git
+          git remote set-url origin https://x-access-token:${PAT_TOKEN}@github.com/${{ github.repository }}.git
           
           git checkout -b $BRANCH
           git add app/${{ matrix.APP_NAME }}/deploy-config/values.yaml
