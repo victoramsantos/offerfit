@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: service-a
+  name: developer-service-b
   namespace: argocd
 spec:
   destination:
-    namespace: default
+    namespace: developer
     server: https://kubernetes.default.svc
   source:
     path: backstage/cd/helm/charts/app
@@ -14,10 +14,12 @@ spec:
     helm:
       valueFiles:
         - values.yaml
-        - /app/service-a/deploy-config/values.yaml
+        - /app/service-b/deploy-config/developer/values.yaml
   sources: []
   project: default
   syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
     automated:
       prune: true
       selfHeal: false

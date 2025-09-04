@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: service-b
+  name: prod-service-b
   namespace: argocd
 spec:
   destination:
-    namespace: default
+    namespace: prod
     server: https://kubernetes.default.svc
   source:
     path: backstage/cd/helm/charts/app
@@ -14,10 +14,12 @@ spec:
     helm:
       valueFiles:
         - values.yaml
-        - /app/service-b/deploy-config/values.yaml
+        - /app/service-b/deploy-config/prod/values.yaml
   sources: []
   project: default
   syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
     automated:
       prune: true
       selfHeal: false

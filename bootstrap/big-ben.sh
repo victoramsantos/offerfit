@@ -35,8 +35,11 @@ helm install metrics-server metrics-server/metrics-server \
 sleep 10
 
 # Deploy the ArgoCD Application for both apps
-kubectl apply -f ${LOCAL_HOME}/app/service-a/deploy-config/application.yaml
-kubectl apply -f ${LOCAL_HOME}/app/service-b/deploy-config/application.yaml
+kubectl apply -f ${LOCAL_HOME}/app/service-a/deploy-config/developer/application.yaml
+kubectl apply -f ${LOCAL_HOME}/app/service-b/deploy-config/developer/application.yaml
+
+kubectl apply -f ${LOCAL_HOME}/app/service-a/deploy-config/prod/application.yaml
+kubectl apply -f ${LOCAL_HOME}/app/service-b/deploy-config/prod/application.yaml
 
 # Add ingresses
 ## argocd

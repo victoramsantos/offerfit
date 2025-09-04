@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: developer-service-a
+  namespace: argocd
+spec:
+  destination:
+    namespace: developer
+    server: https://kubernetes.default.svc
+  source:
+    path: backstage/cd/helm/charts/app
+    repoURL: https://github.com/victoramsantos/offerfit.git
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+        - /app/service-a/deploy-config/developer/values.yaml
+  sources: []
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: false
+      enabled: true

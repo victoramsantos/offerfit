@@ -23,16 +23,16 @@ jobs:
         with:
           ref: ${{ github.event.workflow_run.head_sha }}
 
-      - name: Update ${{ matrix.APP_NAME }}/deployment-config/values.yaml with new tag
+      - name: Update ${{ matrix.APP_NAME }}/deployment-config/developer/values.yaml with new tag
         env:
           COMMIT: ${{ github.event.workflow_run.head_sha }}
         run: |
-          cd app/${{ matrix.APP_NAME }}/deploy-config
+          cd app/${{ matrix.APP_NAME }}/deploy-config/developer
           
           sed -i "s/tag:.*/tag: ${COMMIT:0:7}/" values.yaml
           sed -i '/name: "APP_VERSION"/ { n; s/value:.*/value: '"${COMMIT:0:7}"'/; }' values.yaml
           
-          echo "Updated ${{ matrix.APP_NAME }}/deployment-config/values.yaml content:"
+          echo "Updated ${{ matrix.APP_NAME }}/deploy-config/developer/values.yaml content:"
           cat values.yaml
 
       - name: Commit and push changes
@@ -46,6 +46,6 @@ jobs:
           
           git pull origin $BRANCH
           git checkout $BRANCH
-          git add app/${{ matrix.APP_NAME }}/deploy-config/values.yaml
+          git add app/${{ matrix.APP_NAME }}/deploy-config/developer/values.yaml
           git commit -m "ci: update ${{ matrix.APP_NAME }} image tag to ${COMMIT:0:7}"
           git push origin $BRANCH
