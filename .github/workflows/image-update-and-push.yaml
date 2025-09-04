@@ -48,4 +48,4 @@ jobs:
           git checkout $BRANCH
           git add app/${{ matrix.APP_NAME }}/deploy-config/developer/values.yaml
           git commit -m "ci: update ${{ matrix.APP_NAME }} image tag to ${COMMIT:0:7}"
-          git push origin $BRANCH
+          git push origin $BRANCH --force
