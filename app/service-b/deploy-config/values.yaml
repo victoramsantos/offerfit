@@ -5,7 +5,7 @@ deployment:
 
   image:
     image: offerfit-service-b
-    tag: ${COMMIT:0:7}
+    tag: test
 
   env:
     - name: "APP_PORT"
