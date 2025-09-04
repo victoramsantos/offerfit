@@ -5,7 +5,7 @@ deployment:
 
   image:
     image: offerfit-service-b
-    tag: test
+    tag: 4632410
 
   env:
     - name: "APP_PORT"
