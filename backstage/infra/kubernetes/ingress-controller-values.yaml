@@ -1,4 +1,6 @@
 controller:
+  nodeSelector:
+    tier: backstage
   name: controller
   service:
     type: NodePort

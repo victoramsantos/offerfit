@@ -8,5 +8,5 @@ environment: {{ .Values.environment }}
 {{- end -}}
 
 {{- define "ingress.host" -}}
-{{ .Values.name }}.{{ .Values.ingress.host }}
+{{ .Values.environment }}.{{ .Values.name }}.{{ .Values.ingress.host }}
 {{- end -}}
