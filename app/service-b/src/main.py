@@ -13,9 +13,11 @@ SERVICE_A_PORT = int(os.getenv("SERVICE_A_PORT", "8011"))
 SERVICE_A_HOST = os.getenv("SERVICE_A_HOST", "http://0.0.0.0")
 SERVICE_A_URL = f"{SERVICE_A_HOST}:{SERVICE_A_PORT}"
 
+APP_VERSION = os.getenv("APP_VERSION", "local-run")
+
 app = FastAPI(
     title="Service B FastAPI Client",
-    version="0.1.0",
+    version=APP_VERSION,
 )
 
 @app.get("/health")
@@ -23,6 +25,14 @@ def health():
     return JSONResponse(
         {
             "Status": "Success"
+        }
+    )
+
+@app.get("/version")
+def version():
+    return JSONResponse(
+        {
+            "version": APP_VERSION
         }
     )
 

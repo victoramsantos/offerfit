@@ -7,9 +7,11 @@ from fastapi.responses import JSONResponse
 SERVICE_A_HOST = "0.0.0.0"
 SERVICE_A_PORT = int(os.getenv("APP_PORT", "8012"))
 
+APP_VERSION = os.getenv("APP_VERSION", "local-run")
+
 app = FastAPI(
     title="Service A FastAPI Client",
-    version="0.1.0",
+    version=APP_VERSION,
 )
 
 
@@ -18,6 +20,14 @@ def health():
     return JSONResponse(
         {
             "Status": "Success"
+        }
+    )
+
+@app.get("/version")
+def version():
+    return JSONResponse(
+        {
+            "version": APP_VERSION
         }
     )
 
