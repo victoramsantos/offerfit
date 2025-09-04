@@ -5,7 +5,7 @@ deployment:
 
   image:
     image: offerfit-service-b
-    tag: 3fb9cfd
+    tag: f36dd48
 
   env:
     - name: "APP_PORT"
@@ -15,7 +15,7 @@ deployment:
     - name: "SERVICE_A_HOST"
       value: "http://service-a-service.default.svc.cluster.local"
     - name: "APP_VERSION"
-      value: 3fb9cfd
+      value: f36dd48
 
   nodeSelector:
     tier: backend
