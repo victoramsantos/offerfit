@@ -17,6 +17,9 @@ deployment:
     - name: "APP_VERSION"
       value: 3fb9cfd
 
+  nodeSelector:
+    tier: backend
+
 service:
   port: 8012
 

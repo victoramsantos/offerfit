@@ -21,9 +21,15 @@ helm install ingress-nginx ingress-nginx/ingress-nginx \
   --create-namespace \
   -f ${LOCAL_HOME}/backstage/infra/kind-resources/ingress-controller-values.yaml
 
+# install metric-server
+helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
+helm install metrics-server metrics-server/metrics-server \
+  -n kube-system \
+  -f ${LOCAL_HOME}/backstage/infra/kind-resources/metrics-server-values.yaml
+
 # force the app build
-docker build ${LOCAL_HOME}/app/service-a/. -t victoramsantos/offerfit-service-a:test
-docker build ${LOCAL_HOME}/app/service-b/. -t victoramsantos/offerfit-service-b:test
+#docker build ${LOCAL_HOME}/app/service-a/. -t victoramsantos/offerfit-service-a:test
+#docker build ${LOCAL_HOME}/app/service-b/. -t victoramsantos/offerfit-service-b:test
 
 # wait for ArgoCD and Ingress components start
 sleep 10

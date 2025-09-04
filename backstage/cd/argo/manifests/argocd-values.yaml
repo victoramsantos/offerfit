@@ -1,3 +1,7 @@
+global:
+  nodeSelector:
+    tier: backstage
+
 server:
   extraArgs:
     - --insecure

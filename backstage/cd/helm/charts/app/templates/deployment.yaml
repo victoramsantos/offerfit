@@ -16,6 +16,10 @@ spec:
       labels:
         {{ include "app.labels" . | indent 2 }}
     spec:
+    {{- if .Values.deployment.nodeSelector }}
+      nodeSelector:
+        {{ toYaml .Values.deployment.nodeSelector }}
+    {{- end }}
       containers:
         - name: {{ .Values.name }}
           image: {{ .Values.deployment.image.repository }}/{{ .Values.deployment.image.image }}:{{ .Values.deployment.image.tag }}
