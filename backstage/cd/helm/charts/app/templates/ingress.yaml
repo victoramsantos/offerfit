@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ include "app.name" . }}-ingress
+  name: {{ .Values.environment }}-{{ include "app.name" . }}-ingress
   namespace: {{ .Values.namespace }}
   labels:
     {{ include "app.labels" . | indent 2 }}

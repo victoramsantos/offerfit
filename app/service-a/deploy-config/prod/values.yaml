@@ -1,4 +1,6 @@
 name: "service-a"
+namespace: production
+environment: prod
 
 deployment:
   replicaCount: 1

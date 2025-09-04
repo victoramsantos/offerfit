@@ -4,6 +4,7 @@
 
 {{- define "app.labels" -}}
 app.kubernetes.io/name: {{ include "app.name" . }}
+environment: {{ .Values.environment }}
 {{- end -}}
 
 {{- define "ingress.host" -}}

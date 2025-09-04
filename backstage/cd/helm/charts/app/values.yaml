@@ -1,4 +1,5 @@
 namespace: default
+environment: default
 
 deployment:
   replicaCount: 1

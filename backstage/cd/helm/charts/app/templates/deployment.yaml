@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "app.name" . }}-deployment
+  name: {{ .Values.environment }}-{{ include "app.name" . }}-deployment
   namespace: {{ .Values.namespace }}
   labels:
     {{ include "app.labels" . | indent 2 }}
@@ -13,6 +13,7 @@ spec:
       {{ include "app.labels" . | indent 2 }}
   template:
     metadata:
+      name: {{ .Values.environment }}-{{ include "app.name" . }}
       labels:
         {{ include "app.labels" . | indent 2 }}
     spec:

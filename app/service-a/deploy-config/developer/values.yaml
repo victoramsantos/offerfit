@@ -1,4 +1,6 @@
 name: "service-a"
+namespace: developer
+environment: dev
 
 deployment:
   replicaCount: 1

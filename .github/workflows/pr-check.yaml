@@ -1,13 +1,15 @@
-name: Python CI
+name: PR Checks
+
 on:
-  push:
+  pull_request:
+    branches: [ main ]
+    types: [ opened, synchronize, reopened ]
     paths:
       - 'app/service-a/src/**'
       - 'app/service-b/src/**'
-    branches:
-      - main
+
 jobs:
-  python-ci:
+  python-pr-check:
     runs-on: ubuntu-latest
     strategy:
       matrix:
