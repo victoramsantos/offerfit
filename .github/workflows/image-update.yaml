@@ -31,10 +31,12 @@ jobs:
       - name: Commit and push changes
         env:
           COMMIT: ${{ github.event.workflow_run.head_sha }}
+          BRANCH: main
         run: |
           git config user.name "github-CI-[bot]"
           git config user.email "github-CI-[bot]@friendly.devops.help"
           
+          git checkout $BRANCH
           git add app/${{ matrix.APP_NAME }}/deploy-config/values.yaml
           git commit -m "ci: update ${{ matrix.APP_NAME }} image tag to ${COMMIT:0:7}"
-          git push
+          git push origin $BRANCH
