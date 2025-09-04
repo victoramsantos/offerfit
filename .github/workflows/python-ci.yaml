@@ -2,8 +2,8 @@ name: Python CI
 on:
   push:
     paths:
-      - 'app/service-a/**'
-      - 'app/service-b/**'
+      - 'app/service-a/src/**'
+      - 'app/service-b/src/**'
     branches:
       - main
   pull_request:
