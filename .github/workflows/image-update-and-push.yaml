@@ -16,7 +16,6 @@ jobs:
     strategy:
       matrix:
         APP_NAME: [ "service-a", "service-b" ]
-      max-parallel: 1
 
     steps:
       - name: Checkout to the current CI commit
@@ -43,7 +42,8 @@ jobs:
           git config user.name "${BOT_NAME}"
           git config user.email "${BOT_NAME}@users.noreply.github.com"          
           
-          git checkout -b $BRANCH
+          git pull origin $BRANCH
+          git checkout $BRANCH
           git add app/${{ matrix.APP_NAME }}/deploy-config/values.yaml
           git commit -m "ci: update ${{ matrix.APP_NAME }} image tag to ${COMMIT:0:7}"
-          git push origin $BRANCH --force
+          git push origin $BRANCH
